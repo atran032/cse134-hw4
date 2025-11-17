@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="author" content="Your Name">
+  <meta name="description" content="Portfolio website for Your Name">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anthony's Portfolio | Home</title>
+  <link rel="stylesheet" href="css/style.css">
+
+
+  <script>
+    class HelloWorld extends HTMLElement {
+      constructor() {
+        super();
+        console.log("Hello world!");
+      }
+    }
+  
+    customElements.define("hello-world", HelloWorld);
+  </script>
+</head>
+
+<body>
+  <div class="console">
+    <header class="console-top">
+      <div class="led"></div>
+      <h1><small>Anthony's</small> GAME LAD</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="education.html">Career</a></li>
+          <li><a href="hobbies.html">Hobbies</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- LCD screen -->
+    <main class="screen">
+      <section>
+        <hello-world></hello-world>
+        <h1>Welcome!</h1>
+        <p>Hello! I'm <strong>Anthony Tran</strong>, a computer science undergraduate at UCSD. I'm currently developing this portfolio page as an exercise in <i>semantic</i> HTML. I have many skills and interests, which you can discover throughout this website. Feel free to contact me with any queries!</p>
+      </section>
+
+      <section>
+        <h3>About Me</h3>
+        <picture>
+          <source srcset="images/me_in_tree.jpg" media="(min-width: 600px)">
+          <img src="images/me_small.png" alt="Portrait of Anthony" width="500">
+        </picture>
+        <p>My love of computers developed early, when I first got my hands on the family computer. Ever since, it took off, and I was learning rudimentary programming since the 3rd grade. I love to learn the subject <i>and</i> I love to teach it too. My fondness of computers is also related to my love of <em>video games</em>, but I dabble in many non-digital interests as well. I love to <em>hike</em>, I <em>bake</em>, I practice <em>fencing</em>, and I love to study <em>history</em>.</p>
+
+        <svg width="100" height="100">
+          <circle cx="50" cy="50" r="40" stroke="GoldenRod" stroke-width="4" fill="Gold" />
+          <text x="50%" y="65%" text-anchor="middle" font-size="48" fill="GoldenRod">AT</text>
+        </svg>
+      </section>
+
+      <section>
+        <h3>Extra Credit</h3>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" aria-label="E equals m c squared">
+          <mi>E</mi>
+          <mo>=</mo>
+          <mi>m</mi>
+          <msup>
+            <mi>c</mi>
+            <mn>2</mn>
+          </msup>
+        </math>
+        <p>My guess as to why it was rarely used for so long is because it was only concurrently available on all major browsers only recently...</p>
+      </section>
+
+      <noscript>
+        <p><strong>Note:</strong> This form may not work correctly if JavaScript is disabled.</p>
+      </noscript>
+    </main>
+
+    <!-- Bottom bezel -->
+    <footer class="console-bottom">
+      <div class="speaker"></div>
+      <div class="toggles">
+        <div class="toggle-btn"></div>
+        <div class="toggle-btn"></div>
+      </div>
+      <p>&copy; 2025 Anthony Tran</p>
+    </footer>
+  </div>
+</body>
+</html>

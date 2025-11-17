@@ -1,0 +1,14 @@
+:root {
+  /* Classic Game Boy inspired color palette */
+  --lcd-light: #c5dca0;
+  --lcd-dark: #2d4739;
+  --lcd-border: #1e2f24;
+
+  --console-plastic-core: #cfc8b0;
+
+  /* Typography and layout */
+  --font-main: 'Press Start 2P', monospace;
+  --font-alt: 'VT323', monospace;
+  --font-ui: 'Orbitron', sans-serif; /* 👈 New font for UI elements outside the screen */
+  --font-size-base: 16px;
+}

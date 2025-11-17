@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Experiments</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1>Experiments Page</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="education.html">Education & Career</a></li>
+        <li><a href="hobbies.html">Hobbies</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="experiments.html">Experiments</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- Template -->
+    <section>
+      <h2>Template</h2>
+      <p>The template element is right below here, but is hidden. Check the HTML.</p>
+
+      <template id="example-template">
+        <article>
+          <h3>Hidden Template Content</h3>
+          <p>This content is inside a template and not displayed on the page.</p>
+        </article>
+      </template>
+    </section>
+
+    <!-- Picture -->
+    <section>
+      <h2>Picture</h2>
+      <p>The picture element displays a different colored square based on the width, separated at 800px and 500px.</p>
+      <picture>
+        <source srcset="experiment_media/red_square.jpg" media="(min-width: 800px)">
+        <source srcset="experiment_media/blue_square.jpg" media="(min-width: 500px)">
+        <img src="experiment_media/green_square.jpg" alt="Example squares" width="400">
+      </picture>
+    </section>
+
+    <!-- Audio -->
+    <section>
+      <h2>Audio</h2>
+      <p>An example audio clip with fallback text:</p>
+      <audio controls>
+        <source src="experiment_media/example_audio.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+    </section>
+
+    <!-- Video -->
+    <section>
+      <h2>Video</h2>
+      <p>A sample video player using multiple <code>&lt;source&gt;</code> formats for compatibility:</p>
+      <video controls width="480">
+        <source src="experiment_media/example_video.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </section>
+
+    <!-- Canvas -->
+    <section>
+      <h2>Canvas</h2>
+      <p>This demonstrates a simple shape drawn using the <code>&lt;canvas&gt;</code> tag and a few lines of JavaScript.</p>
+      <canvas id="myCanvas" width="300" height="150" style="border:1px solid black;"></canvas>
+
+      <script>
+        const c = document.getElementById("myCanvas");
+        const ctx = c.getContext("2d");
+        ctx.fillStyle = "lightblue";
+        ctx.fillRect(10, 10, 100, 100);
+        ctx.strokeStyle = "navy";
+        ctx.lineWidth = 4;
+        ctx.strokeRect(10, 10, 100, 100);
+        ctx.fillStyle = "lightpink";
+        ctx.fillRect(50, 50, 200, 100);
+        ctx.strokeStyle = "hotpink";
+        ctx.lineWidth = 4;
+        ctx.strokeRect(50, 50, 200, 100);
+      </script>
+    </section>
+
+  </main>
+
+  <footer>
+    <p><a href="index.html">Back to Home</a></p>
+  </footer>
+</body>
+</html>
