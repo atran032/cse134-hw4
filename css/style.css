@@ -286,6 +286,26 @@ game-review {
   }
 }
 
+/* Output message placeholders */
+.form-error,
+.form-info {
+  display: block;
+  padding: 0.75rem;
+  border: 3px solid var(--lcd-border);
+  background: rgba(0, 0, 0, 0.08);
+  font-family: var(--font-alt);
+  font-size: 1.2rem;
+  min-height: 2rem;
+}
+
+.form-error {
+  color: darkred;
+}
+
+.form-info {
+  color: darkgreen;
+}
+
 /* ------- Radio Buttons Retro Style ------- */
 
 .radio-option {
