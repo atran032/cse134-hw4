@@ -1,5 +1,33 @@
 document.addEventListener("DOMContentLoaded", () => {
 
+  // -------------------------------
+  // THEME INITIALIZATION
+  // -------------------------------
+  const root = document.documentElement;
+  const toggleBtn = document.getElementById("theme-toggle");
+
+  // Load saved theme from localStorage, or default to light
+  const savedTheme = localStorage.getItem("theme") || "light";
+  root.setAttribute("data-theme", savedTheme);
+
+
+  // -------------------------------
+  // THEME TOGGLE HELPER
+  // -------------------------------
+  function toggleTheme() {
+    const current = root.getAttribute("data-theme");
+    const next = current === "light" ? "dark" : "light";
+
+    root.setAttribute("data-theme", next);
+    localStorage.setItem("theme", next);
+  }
+
+
+  // -------------------------------
+  // ADD CLICK EVENT TO THE BUTTON
+  // -------------------------------
+  toggleBtn.addEventListener("click", toggleTheme);
+
   // === ELEMENT REFERENCES ===
   const form = document.querySelector(".contact-form");
 
@@ -137,7 +165,6 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    // No errors: send accumulated attempts
     formErrorsField.value = JSON.stringify(formErrors);
 
     dialog.showModal();

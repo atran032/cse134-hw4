@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <title>Contact</title>
@@ -45,7 +45,6 @@
                 required maxlength="50">
         </fieldset>
 
-        <!-- Top inline error (illegal characters, etc.) -->
         <output id="inline-error" class="form-error"></output>
 
         <fieldset>
@@ -72,7 +71,6 @@
           </label>
         </fieldset>
 
-        <!-- Info panel for purpose explanation -->
         <output id="form-info" class="form-info"></output>
 
         <fieldset>
@@ -86,7 +84,6 @@
           <output id="message-counter" class="info"></output>
         </fieldset>
 
-        <!-- Bottom submit-time errors -->
         <output id="submit-error" class="form-error"></output><br>
 
         <button type="submit">Send</button>
@@ -95,19 +92,22 @@
       <dialog id="submitted-dialog">
         <p>Your message is sent!</p>
       </dialog>
+
+      <noscript>
+        <p><strong>Note:</strong> Automatic form validation disabled.</p>
+      </noscript>
     </main>
 
     <footer class="console-bottom">
       <speaker-grate></speaker-grate>
       <button-area>
-        <toggle-btn></toggle-btn>
+        <toggle-btn id="theme-toggle"></toggle-btn>
         <toggle-btn></toggle-btn>
       </button-area>
       <p><a href="index.html">Back to Home</a></p>
     </footer>
   </console-frame>
 
-  <!-- ADD THIS -->
   <script src="js/script.js" defer></script>
 </body>
 </html>
