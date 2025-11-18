@@ -286,26 +286,6 @@ game-review {
   }
 }
 
-/* Output message placeholders */
-.form-error,
-.form-info {
-  display: block;
-  padding: 0.75rem;
-  border: 3px solid var(--lcd-border);
-  background: rgba(0, 0, 0, 0.08);
-  font-family: var(--font-alt);
-  font-size: 1.2rem;
-  min-height: 2rem;
-}
-
-.form-error {
-  color: darkred;
-}
-
-.form-info {
-  color: darkgreen;
-}
-
 /* ------- Radio Buttons Retro Style ------- */
 
 .radio-option {
@@ -338,6 +318,60 @@ dialog {
     margin: 2rem auto;
     font-size: 1.3rem;
   }
+
+/* Flash animation for illegal characters */
+.flash {
+  animation: flash-red 0.15s ease-out;
+}
+
+@keyframes flash-red {
+  0% { background-color: #ffcccc; }
+  100% { background-color: inherit; }
+}
+
+/* Error and info output styling */
+#inline-error,
+#submit-error,
+#form-info {
+  display: block;
+  margin-top: 0.5rem;
+  padding: 0.35rem 0.5rem;
+  min-height: 1.2rem;
+  font-size: 0.9rem;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+#inline-error.visible,
+#submit-error.visible {
+  color: #a30000;
+  background: #ffd4d4;
+  opacity: 1;
+}
+
+#form-info.visible {
+  color: #003f9e;
+  background: #dce8ff;
+  opacity: 1;
+}
+
+/* Character countdown */
+#message-counter {
+  display: block;
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+  color: var(--lcd-secondary);
+}
+
+#message-counter.warn {
+  color: #c47c00;
+  font-weight: bold;
+}
+
+#message-counter.error {
+  color: #a30000;
+  font-weight: bold;
+}
 
 
 
