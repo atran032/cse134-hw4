@@ -5,6 +5,23 @@ body {
   background: darkslategrey;
 }
 
+/* --- Animations --- */
+@keyframes led-pulse {
+  0%, 100% { box-shadow: 0 0 4px red; }
+  50% { box-shadow: 0 0 12px red; }
+}
+
+@keyframes fade-out {
+  from { opacity: 1; }
+  to   { opacity: 0; background: var(--lcd-primary); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+
 /* --- Console Container --- */
 console-frame {
   display: flex;
@@ -18,11 +35,6 @@ console-frame {
   max-width: 960px;
   overflow: hidden;
   border: 6px solid #8a8577;
-}
-
-@keyframes led-pulse {
-  0%, 100% { box-shadow: 0 0 4px red; }
-  50% { box-shadow: 0 0 12px red; }
 }
 
 
@@ -163,6 +175,17 @@ main.screen {
   overflow-y: auto;
   font-family: var(--font-alt);
   font-size: var(--font-size-base);
+  view-transition-name: lcd-screen;
+
+  /* Fading out old screen */
+  ::view-transition-old(lcd-screen) {
+    animation: fade-out 0.35s ease forwards;
+  }
+
+  /* Fading in new screen */
+  ::view-transition-new(lcd-screen) {
+    animation: fade-in 0.35s ease forwards;
+  }
 
   h1 {
     font-size: 5rem;

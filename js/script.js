@@ -1,50 +1,39 @@
 document.addEventListener("DOMContentLoaded", () => {
+  let root = document.documentElement;
 
-  // -------------------------------
-  // THEME INITIALIZATION
-  // -------------------------------
-  const root = document.documentElement;
-  const toggleBtn = document.getElementById("theme-toggle");
+  // Theme Toggle
+  let toggleBtn = document.getElementById("theme-toggle");
 
-  // Load saved theme from localStorage, or default to light
-  const savedTheme = localStorage.getItem("theme") || "light";
+  let savedTheme = localStorage.getItem("theme") || "light";
   root.setAttribute("data-theme", savedTheme);
 
-
-  // -------------------------------
-  // THEME TOGGLE HELPER
-  // -------------------------------
   function toggleTheme() {
-    const current = root.getAttribute("data-theme");
-    const next = current === "light" ? "dark" : "light";
+    let current = root.getAttribute("data-theme");
+    let next = current === "light" ? "dark" : "light";
 
     root.setAttribute("data-theme", next);
     localStorage.setItem("theme", next);
   }
 
-
-  // -------------------------------
-  // ADD CLICK EVENT TO THE BUTTON
-  // -------------------------------
   toggleBtn.addEventListener("click", toggleTheme);
 
-  // === ELEMENT REFERENCES ===
-  const form = document.querySelector(".contact-form");
-
-  const nameField = document.getElementById("name");
-  const emailField = document.getElementById("email");
-  const messageField = document.getElementById("message");
-
-  const inlineErrorOutput = document.getElementById("inline-error");
-  const submitErrorOutput = document.getElementById("submit-error");
-  const formInfoOutput = document.getElementById("form-info");
-  const formErrorsField = document.getElementById("form-errors");
-
-  const messageCounter = document.getElementById("message-counter");
-  const dialog = document.getElementById("submitted-dialog");
 
 
-  // === HELPER: Show temporary error message (TOP INLINE ERROR) ===
+  // Form Script
+  let form = document.querySelector(".contact-form");
+
+  let nameField = document.getElementById("name");
+  let emailField = document.getElementById("email");
+  let messageField = document.getElementById("message");
+
+  let inlineErrorOutput = document.getElementById("inline-error");
+  let submitErrorOutput = document.getElementById("submit-error");
+  let formInfoOutput = document.getElementById("form-info");
+  let formErrorsField = document.getElementById("form-errors");
+
+  let messageCounter = document.getElementById("message-counter");
+  let dialog = document.getElementById("submitted-dialog");
+
   function flashInlineError(msg) {
     inlineErrorOutput.textContent = msg;
     inlineErrorOutput.classList.add("visible");
@@ -56,11 +45,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-  // ========================================================
-  // 1. Prevent illegal characters in real time (Name field)
-  // ========================================================
+  // Check characters in name field
   nameField.addEventListener("beforeinput", (e) => {
-    const disallowed = /[^A-Za-z\s]/;
+    let disallowed = /[^A-Za-z\s]/;
 
     if (e.data && disallowed.test(e.data)) {
       e.preventDefault();
@@ -73,9 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 
-  // ========================================================
-  // 2. Character countdown for textarea
-  // ========================================================
+  // Character countdown
   function updateMessageCounter() {
     let max = messageField.maxLength;
     let used = messageField.value.length;
@@ -97,10 +82,8 @@ document.addEventListener("DOMContentLoaded", () => {
   updateMessageCounter();
 
 
-  // ========================================================
-  // 3. Live PURPOSE INFO (radio explanations)
-  // ========================================================
-  const purposeDescriptions = {
+  // Info pop-up for buttons
+  let purposeDescriptions = {
     feedback:
       "Feedback — Tell me what you think of the site or offer suggestions.",
     question:
@@ -124,9 +107,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 
-  // ========================================================
-  // 4. Collect submit-time errors in JSON format
-  // ========================================================
+  // Error collection
   let formErrors = [];
 
   form.addEventListener("submit", (e) => {
@@ -169,5 +150,31 @@ document.addEventListener("DOMContentLoaded", () => {
 
     dialog.showModal();
   });
+
+
+
+  // MPA View Transition (LCD)
+  // Only activate if the browser supports it
+  if (document.startViewTransition) {
+    document.addEventListener("click", (e) => {
+      let link = e.target.closest("a");
+      if (!link) return;
+
+      // Only intercept same-origin normal navigation links
+      let url = new URL(link.href);
+      if (url.origin !== location.origin) return;
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+      e.preventDefault();
+
+      // The LCD screen area we want to transition
+      let screen = document.querySelector(".screen");
+
+      document.startViewTransition(() => {
+        // Navigate after DOM is in "old" state
+        window.location.href = link.href;
+      });
+    });
+  }
 
 });
